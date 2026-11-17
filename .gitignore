@@ -1,0 +1,27 @@
+# Build scratch: esbuild's intermediate CJS bundle for the client half.
+/build/
+
+# Local test scratch (the standalone proxy bundle, screenshots).
+/.test/
+/*.png
+
+# Test scripts are development-only and are not part of the shipped plugin.
+# The build scripts (scripts/build-*.mjs) and scripts/lib/paths.mjs ARE tracked.
+/scripts/test-*.mjs
+/scripts/check-*.mjs
+/scripts/run-tests.mjs
+/scripts/typecheck.mjs
+/scripts/build-test.mjs
+/scripts/lib/harness.mjs
+
+# Local engineering notes (symptom -> root cause -> fix, per bug). Not user-facing
+# documentation: README.md is the public one.
+/DEVELOPMENT.md
+
+# Session handoff notes (whose turn it is, what is half-done). Local only.
+/HANDOFF.md
+
+# Assistant workspace state (session memory, local caches). Never shipped.
+/.workbuddy/
+
+node_modules/

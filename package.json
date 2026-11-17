@@ -1,0 +1,40 @@
+{
+  "name": "dsh-chat-deepseek",
+  "version": "0.2.0",
+  "description": "Embedded DeepSeek Chat for the dsh web GUI. Host half runs a local same-origin reverse proxy in front of chat.deepseek.com (strips the frame-ancestors CSP, rewrites static assets, rebinds cookies) so the site can render inside an iframe; browser half registers a real GUI panel (sidebar.panellist row + main slot) and keeps one warm iframe over the centre column. Log in once, then it stays logged in.",
+  "type": "module",
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime"
+      ],
+      "platform": "web"
+    }
+  },
+  "files": [
+    "lib/**/*.js",
+    "src",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node scripts/build-host.mjs && node scripts/build-client.mjs"
+  },
+  "license": "Apache-2.0"
+}
